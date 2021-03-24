@@ -1,4 +1,4 @@
-var events = require("./index.js");
+var events = require("./pp-events.min.js");
 
 var Event = new events();
 
@@ -12,9 +12,5 @@ function A(msg){
 Event.on("sayHello",sayHello)
 Event.on("sayHelloOtro",sayHello)
 Event.on("sayHello",A)
-
-Event.removeListener("sayHello",sayHello);
-
-Event.removeListener("sayHello",A);
 
 Event.emit("sayHello","Mensajes personalizados");

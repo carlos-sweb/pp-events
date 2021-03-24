@@ -2,9 +2,9 @@
   "name": "pp-events",
   "version": "1.0.0",
   "description": "Simple manager of events from javascript",
-  "main": "index.js",
+  "main": "pp-events.js",
   "scripts": {
-    "test": "terser --output pp-events.min.js --compress --mangle -- pp.events.js "
+    "test": "terser --output pp-events.min.js --compress --mangle -- pp-events.js "
   },
   "repository": {
     "type": "git",

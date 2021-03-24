@@ -19,9 +19,7 @@
 ));
 
 })( this,(function() {
-
 	return function(){
-
 			/**
 			*@property {object} events - Container of events
 			*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
@@ -85,6 +83,4 @@
 			}			
 //---------------------------------------
 	}
-
-
 }));	

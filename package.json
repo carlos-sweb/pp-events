@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Simple manager of events from javascript",
   "main": "pp-events.js",
+  "publishConfig":{
+    "registry":"https://npm.pkg.github.com/@pp-events"
+  },
   "scripts": {
     "test": "terser --output pp-events.min.js --compress --mangle -- pp-events.js "
   },

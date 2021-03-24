@@ -25,7 +25,7 @@
 			/**
 			*@property {object} events - Container of events
 			*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
-			*@memberof ppModel
+			*@memberof ppEvents
 			*/
 			this.events = {};
 			/**
@@ -33,7 +33,7 @@
 			*@param {string} eventName - name event 
 			*@param {function} callbacks - Function for execute when emit event name
 			*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
-			*@memberof ppModel
+			*@memberof ppEvents
 			*@returns {void} 
 			*/
 			this.on = function( eventName , callbacks ){
@@ -49,7 +49,7 @@
 			/**
 			*emit
 			*@param {string} eventName - name for events call
-			*@memberof ppModel
+			*@memberof ppEvents
 			*@returns {void}	    
 			*/
 			this.emit = function( eventName ){        
@@ -62,7 +62,13 @@
 				  }
 				}
 			}	  
-
+			/**
+			*emit
+			*@param {string} eventName - name for events call
+			*@param {funcion} function - funcion will be remove 
+			*@memberof ppEvents
+			*@returns {void}	    
+			*/
 			this.removeListener = function( eventName , callbacks ){
 				var idx; 
 				if( typeof this.events[eventName] === 'object' ){
@@ -70,13 +76,13 @@
 					idx = this.events[eventName].indexOf(callbacks);
 										
 					if( idx > -1 ){
+
 						this.events[eventName].splice(idx,1);
+
 					}
 					
 				}
-			}
-
-			
+			}			
 //---------------------------------------
 	}
 

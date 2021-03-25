@@ -1,18 +1,18 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.0.2 (2020/03/24 22:01 PM)
+ * @version 1.0.2 (2020/03/24 22:27 PM)
  * Released under the MIT License
  */
 (function(global , factory ){
   	
   	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   	
-  	typeof define === 'function' && define.amd ? define('ppModel', factory) :
+  	typeof define === 'function' && define.amd ? define('ppEvents', factory) :
 	
 	(global = global || self, (function () {
         
-    var exports = global.ppModel = factory();    
+    var exports = global.ppEvents = factory();    
 
 	}()
 	

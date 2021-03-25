@@ -45,14 +45,17 @@ Event.removeListener("satHello",sayHello);
 
 ### on: [Function]
 
-```
-
+```javascript
+Event.on("eventName",myFunction);
 ```
 ### emit: [Function]
-```
-
+```javascript
+Event.on("eventName",{
+	mydata:"myvalue",
+	otherData:"otherValue"
+});
 ```
 ### removeListener: [Function]
-```
-
+```javascript
+Event.removeListener("eventName",myFunction);
 ```

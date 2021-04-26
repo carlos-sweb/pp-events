@@ -6,10 +6,10 @@ npm i pp-events --save
 
 ## Getting Started
 
-In the web project include pp-model.js with:
+In the web project include pp-events.js with:
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.4/pp-events.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.5/pp-events.min.js" ></script>
 ```
 
 Or 

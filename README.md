@@ -1,4 +1,4 @@
-# pp-model.js
+# pp-events.js
 
 ```
 npm i pp-events --save
@@ -9,7 +9,7 @@ npm i pp-events --save
 In the web project include pp-model.js with:
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.3/pp-events.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.4/pp-events.min.js" ></script>
 ```
 
 Or 

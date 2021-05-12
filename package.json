@@ -1,6 +1,6 @@
 {
   "name": "pp-events",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple manager of events from javascript",
   "main": "pp-events.js",  
   "scripts": {

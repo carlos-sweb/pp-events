@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.0.6 (2020/05/11 19:51 PM)
+ * @version 1.0.7 (2020/05/11 19:51 PM)
  * Released under the MIT License
  */
 (function(global,factory){

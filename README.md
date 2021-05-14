@@ -10,7 +10,7 @@ Or
 
 ## Install
 
-```
+```properties
 npm i pp-events --save
 ```
 

@@ -43,19 +43,35 @@ Event.removeListener("satHello",sayHello);
 
 ## Methods
 
-### on: [Function]
+### `on`: [Function]
 
 ```javascript
 Event.on("eventName",myFunction);
 ```
-### emit: [Function]
+### `emit`: [Function]
 ```javascript
 Event.on("eventName",{
 	mydata:"myvalue",
 	otherData:"otherValue"
 });
 ```
-### removeListener: [Function]
+
+### `emit`: [Function]
+```javascript
+Event.on("eventName",{
+	mydata:"myvalue",
+	otherData:"otherValue"
+});
+```
+### `checkOn`: [Function]
+```javascript
+Event.on("eventName",{
+	mydata:"myvalue",
+	otherData:"otherValue"
+});
+```
+
+### `removeListener`: [Function]
 ```javascript
 Event.removeListener("eventName",myFunction);
 ```

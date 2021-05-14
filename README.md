@@ -1,15 +1,11 @@
 # pp-events.js
 
-```
-npm i pp-events --save
-```
-
 ## Getting Started
 
 In the web project include pp-events.js with:
 
-```
-<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.8/pp-events.min.js" ></script>
+```html
+<script src="https://cdn.jsdelivr.net/npm/pp-events@latest/pp-events.min.js" ></script>
 ```
 
 Or

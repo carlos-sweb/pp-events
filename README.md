@@ -9,10 +9,10 @@ npm i pp-events --save
 In the web project include pp-events.js with:
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.7/pp-events.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.8/pp-events.min.js" ></script>
 ```
 
-Or 
+Or
 
 ## Install
 

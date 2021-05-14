@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.0.7 (2020/05/11 19:51 PM)
+ * @version 1.0.8 (2020/05/14 12:21 AM)
  * Released under the MIT License
  */
 (function(global,factory){
@@ -13,11 +13,11 @@
 ));
 })(this,function(){
 	/**
-	*@var {object} events - Container of events	
-	*/	
+	*@var {object} events - Container of events
+	*/
   	var events = {};
   	/*
-  	*@var {function} toString - link of native function from object prototype	
+  	*@var {function} toString - link of native function from object prototype
   	*/
   	var toString =  Object.prototype.toString;
   	/*
@@ -39,12 +39,21 @@
 	/*
 	*@var {object} proto - link to prototype from main function
 	*/
-  	proto = ppEvents.prototype;
+  proto = ppEvents.prototype;
+  /**
+	*on
+	*@param {string} eventName - name event
+	*@returns {boolean}
+  *@description -> check if events var have callbacks assign
+	*/
+  proto.checkOn = function( eventName ){
+    return isString(eventName) ?  events.hasOwnProperty(eventName) : false;
+  }
 	/**
 	*on
-	*@param {string} eventName - name event 
+	*@param {string} eventName - name event
 	*@param {function} callbacks - Function for execute when emit event name
-	*@returns {void} 
+	*@returns {void}
 	*/
 	proto.on = function( eventName , callbacks ){
 	  if( isString( eventName ) && isFunction(callbacks) ){
@@ -57,8 +66,7 @@
 	/**
 	*emit
 	*@param {string} eventName - name for events call
-	*@memberof ppEvents
-	*@returns {void}	    
+	*@returns {void}
 	*/
 	proto.emit = function( eventName ){
 		var i, listeners, length, args = [].slice.call(arguments, 1);
@@ -74,9 +82,8 @@
 	/**
 	*removeListener
 	*@param {string} eventName - name for events call
-	*@param {funcion} function - funcion will be remove 
-	*@memberof ppEvents
-	*@returns {void}	    
+	*@param {funcion} function - funcion will be remove
+	*@returns {void}
 	*/
 	proto.removeListener = function( eventName , callbacks ){
 			var idx;
@@ -88,4 +95,4 @@
 			}
 	}
   	return ppEvents;
-});	
+});

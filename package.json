@@ -1,8 +1,8 @@
 {
   "name": "pp-events",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simple manager of events from javascript",
-  "main": "pp-events.js",  
+  "main": "pp-events.js",
   "scripts": {
     "compile": "terser --output pp-events.min.js --compress --mangle --comments false -- pp-events.js"
   },

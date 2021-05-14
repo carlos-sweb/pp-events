@@ -52,7 +52,7 @@ Event.on("eventName",myFunction);
 
 ### `emit`
 ```javascript
-Event.on("eventName",{
+Event.emit("eventName",{
 	mydata:"myvalue",
 	otherData:"otherValue"
 });
@@ -61,10 +61,7 @@ Event.on("eventName",{
 
 ### `checkOn`
 ```javascript
-Event.on("eventName",{
-	mydata:"myvalue",
-	otherData:"otherValue"
-});
+Event.checkOn("eventName");
 ```
 ---
 

@@ -1,5 +1,3 @@
-# pp-events.js
-
 ## Getting Started
 
 In the web project include pp-events.js with:

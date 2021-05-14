@@ -37,7 +37,7 @@ Event.emit("sayHello","Hi everyone !!!!!")
 
 // remove Events if will be necesary
 
-Event.removeListener("satHello",sayHello);
+Event.removeListener("sayHello",sayHello);
 
 ```
 

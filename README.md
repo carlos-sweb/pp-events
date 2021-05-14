@@ -48,13 +48,7 @@ Event.removeListener("satHello",sayHello);
 ```javascript
 Event.on("eventName",myFunction);
 ```
-### `emit`
-```javascript
-Event.on("eventName",{
-	mydata:"myvalue",
-	otherData:"otherValue"
-});
-```
+---
 
 ### `emit`
 ```javascript
@@ -63,6 +57,8 @@ Event.on("eventName",{
 	otherData:"otherValue"
 });
 ```
+---
+
 ### `checkOn`
 ```javascript
 Event.on("eventName",{
@@ -70,6 +66,7 @@ Event.on("eventName",{
 	otherData:"otherValue"
 });
 ```
+---
 
 ### `removeListener`
 ```javascript

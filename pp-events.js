@@ -20,7 +20,7 @@
       root.ppEvents = factory(root, {}, root.ppIs );
     }
 
-})(this,function( root, exports , ppIs ){
+})(this,function( root, exports , ppIs ){  
 	/**
 	*@var {object} events - Container of events
 	*/

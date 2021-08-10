@@ -3,6 +3,7 @@
 In the web project include pp-events.js with:
 
 ```html
+<script src="https://cdn.jsdelivr.net/npm/pp-is@latest/pp-is.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/pp-events@latest/pp-events.min.js" ></script>
 ```
 

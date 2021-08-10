@@ -1,41 +1,34 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.0.9 (2020/05/14 18:12 PM)
+ * @version 1.2.0 (2020/05/14 18:12 PM)
  * Released under the MIT License
  */
 (function(global,factory){
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define('ppEvents', factory) :
-  (global = global || self, (function () {
-    var exports = global.ppEvents = factory();
-	}()
-));
-})(this,function(){
+
+  var root = typeof self == 'object' && self.self === self && self ||
+    typeof global == 'object' && global.global === global && global;
+    if (typeof define === 'function' && define.amd) {
+      define(['ppIs','exports'], function(ppIs, exports) {
+        root.ppEvents = factory( root , exports , ppIs );
+      });
+    } else if (typeof exports !== 'undefined') {
+      var ppIs = {};
+      try { ppIs = require('pp-is'); } catch (e) {}
+      module.exports = factory(root, exports, ppIs );
+    } else {
+      root.ppEvents = factory(root, {}, root.ppIs );
+    }
+
+})(this,function( root, exports , ppIs ){
 	/**
 	*@var {object} events - Container of events
 	*/
-  	var events = {};
-  	/*
-  	*@var {function} toString - link of native function from object prototype
-  	*/
-  	var toString =  Object.prototype.toString;
-  	/*
-  	*@var {function} isString - check if value is type String
-  	*/
-	var isString = function( value  ){
-	 return toString.call( value ) === '[object String]'
-	}
-	/*
-  	*@var {function} isFunction - check if value is type String
-  	*/
-	var isFunction = function( value  ){
-	 return toString.call( value ) === '[object Function]'
-	}
-	/*
-  	*@var {function} ppEvents - main function
-  	*/
-  	var ppEvents = function(){},
+  var events = {};
+  /*
+  *@var {function} ppEvents - main function
+  */
+  var ppEvents = function(){},
 	/*
 	*@var {object} proto - link to prototype from main function
 	*/
@@ -47,7 +40,7 @@
   *@description -> check if events var have callbacks assign
 	*/
   proto.checkOn = function( eventName ){
-    return isString(eventName) ?  events.hasOwnProperty(eventName) : false;
+    return ppIs.isString(eventName) ?  events.hasOwnProperty(eventName) : false;
   }
 	/**
 	*on
@@ -56,7 +49,7 @@
 	*@returns {void}
 	*/
 	proto.on = function( eventName , callbacks ){
-	  if( isString( eventName ) && isFunction(callbacks) ){
+	  if( ppIs.isString( eventName ) && ppIs.isFunction(callbacks) ){
 	    if( !events.hasOwnProperty(eventName) ){
 	      events[ eventName ] = []
 	    }

@@ -74,7 +74,7 @@ Checks if value is a undefined.
 
 var value = "string...";
 
-if( isString(value) ){
+if( ppIs.isString(value) ){
   // Enter your code here
 }
 ```
@@ -85,7 +85,7 @@ if( isString(value) ){
 
 var value = "string...";
 
-isString( value , function( val ){
+ppIs.isString( value , function( val ){
     // Enter your code here
 })
 

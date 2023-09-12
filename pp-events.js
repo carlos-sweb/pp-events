@@ -1,11 +1,11 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.2.1 (2020/05/14 18:12 PM)
+ * @version 1.2.2 (2020/09/12 21:50 PM)
  * Released under the MIT License
  */
 (function(global,factory){
-
+  'use strict';
   var root = typeof self == 'object' && self.self === self && self ||
     typeof global == 'object' && global.global === global && global;
     if (typeof define === 'function' && define.amd) {
@@ -21,9 +21,7 @@
     }
 
 })(this,function( root, exports , ppIs ){
-	/**
-	*@var {object} events - Container of events
-	*/
+ 
   var events = {};
   /*
   *@var {function} ppEvents - main function
@@ -49,11 +47,10 @@
 	*@returns {void}
 	*/
 	proto.on = function( eventName , callbacks ){
-	  if( ppIs.isString( eventName ) && ppIs.isFunction(callbacks) ){
-	    if( !events.hasOwnProperty(eventName) ){
-	      events[ eventName ] = []
-	    }
-	    events[ eventName ].push( callbacks );
+	  if( ppIs.isString( eventName ) && ppIs.isFunction(callbacks) ){								
+		!ppIs.isUndefined( events[ eventName ] , () => {events[eventName] = [];return false;}) ? 
+		events[eventName].push( callbacks ) : 
+		void(0);
 	  }
 	}
 	/**
@@ -61,16 +58,12 @@
 	*@param {string} eventName - name for events call
 	*@returns {void}
 	*/
-	proto.emit = function( eventName ){
-		var i, listeners, length, args = [].slice.call(arguments, 1);
-		if (typeof events[eventName] === 'object') {
-		  listeners = events[eventName].slice();
-
-		  for (i = 0; i < listeners.length; i++) {
-		      listeners[i].apply(this, args);
-		  }
-
-		}
+	proto.emit = function( eventName , ...args){		 		 
+		 if( ppIs.isArray( events[eventName] )  ){			
+			for (const listener of events[eventName].slice() ) {				
+				listener.apply(this, args);
+			}
+		 }
 	}
 	/**
 	*removeListener
@@ -79,13 +72,12 @@
 	*@returns {void}
 	*/
 	proto.removeListener = function( eventName , callbacks ){
-			var idx;
-			if( typeof events[eventName] === 'object' ){
-				idx = events[eventName].indexOf(callbacks);
-				if( idx > -1 ){
-					events[eventName].splice(idx,1);
-				}
+		ppIs.isArray(events[eventName],( ) => {			
+			const idx = events[eventName].indexOf(callbacks);
+			if( idx > -1 ){
+				events[eventName].splice(idx,1);
 			}
+		});
 	}
   return ppEvents;
 });

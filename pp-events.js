@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.2.2 (2020/09/12 21:50 PM)
+ * @version 1.2.3 (2020/09/14 14:16 PM)
  * Released under the MIT License
  */
 (function(global,factory){
@@ -22,31 +22,29 @@
 
 })(this,function( root, exports , ppIs ){
  
-  var events = {};
+  
   /*
   *@var {function} ppEvents - main function
   */
-  var ppEvents = function(){},
-	/*
-	*@var {object} proto - link to prototype from main function
-	*/
-  proto = ppEvents.prototype;
-  /**
+  var ppEvents = function(){
+
+	var events = {};
+	/**
 	*on
 	*@param {string} eventName - name event
 	*@returns {boolean}
-  *@description -> check if events var have callbacks assign
+	*@description -> check if events var have callbacks assign
 	*/
-  proto.checkOn = function( eventName ){
-    return ppIs.isString(eventName) ?  events.hasOwnProperty(eventName) : false;
-  }
+	this.checkOn = function( eventName ){
+    	return ppIs.isString(eventName) ?  events.hasOwnProperty(eventName) : false;
+  	}
 	/**
 	*on
 	*@param {string} eventName - name event
 	*@param {function} callbacks - Function for execute when emit event name
 	*@returns {void}
 	*/
-	proto.on = function( eventName , callbacks ){
+	this.on = function( eventName , callbacks ){
 	  if( ppIs.isString( eventName ) && ppIs.isFunction(callbacks) ){								
 		!ppIs.isUndefined( events[ eventName ] , () => {events[eventName] = [];return false;}) ? 
 		events[eventName].push( callbacks ) : 
@@ -58,7 +56,7 @@
 	*@param {string} eventName - name for events call
 	*@returns {void}
 	*/
-	proto.emit = function( eventName , ...args){		 		 
+	this.emit = function( eventName , ...args){		 		 
 		 if( ppIs.isArray( events[eventName] )  ){			
 			for (const listener of events[eventName].slice() ) {				
 				listener.apply(this, args);
@@ -71,7 +69,7 @@
 	*@param {funcion} function - funcion will be remove
 	*@returns {void}
 	*/
-	proto.removeListener = function( eventName , callbacks ){
+	this.removeListener = function( eventName , callbacks ){
 		ppIs.isArray(events[eventName],( ) => {			
 			const idx = events[eventName].indexOf(callbacks);
 			if( idx > -1 ){
@@ -79,5 +77,8 @@
 			}
 		});
 	}
+
+  }
+  
   return ppEvents;
 });

@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.2.3 (2020/09/14 14:16 PM)
+ * @version 1.2.4 (2024/03/12 00:07 AM)
  * Released under the MIT License
  */
 (function(global,factory){
@@ -21,34 +21,38 @@
     }
 
 })(this,function( root, exports , ppIs ){
- 
+ 	
+  const isF = ppIs.isFunction,
+  isS = ppIs.isString,
+  isU = ppIs.isUndefined,
+  isA = ppIs.isArray;
   
   /*
   *@var {function} ppEvents - main function
   */
-  var ppEvents = function(){
+  return function(){
 
-	var events = {};
+	this.events = {};
 	/**
 	*on
 	*@param {string} eventName - name event
 	*@returns {boolean}
 	*@description -> check if events var have callbacks assign
 	*/
-	this.checkOn = function( eventName ){
-    	return ppIs.isString(eventName) ?  events.hasOwnProperty(eventName) : false;
-  	}
+	this.checkOn = function( eventName ){		  
+    return isS(eventName) ? this.events.hasOwnProperty(eventName) : false;
+	}
 	/**
 	*on
 	*@param {string} eventName - name event
 	*@param {function} callbacks - Function for execute when emit event name
 	*@returns {void}
 	*/
-	this.on = function( eventName , callbacks ){
-	  if( ppIs.isString( eventName ) && ppIs.isFunction(callbacks) ){								
-		!ppIs.isUndefined( events[ eventName ] , () => {events[eventName] = [];return false;}) ? 
-		events[eventName].push( callbacks ) : 
-		void(0);
+	this.on = function( eventName , callbacks ){		
+	  if( isS( eventName ) && isF(callbacks) ){								
+		 !isU( this.events[ eventName ] , () => { this.events[eventName] = [];return false;}) ? 
+		 this.events[eventName].push( callbacks ) : 
+		 void(0);
 	  }
 	}
 	/**
@@ -57,8 +61,8 @@
 	*@returns {void}
 	*/
 	this.emit = function( eventName , ...args){		 		 
-		 if( ppIs.isArray( events[eventName] )  ){			
-			for (const listener of events[eventName].slice() ) {				
+		 if( isA( this.events[eventName] )  ){			
+			for (const listener of this.events[eventName].slice() ) {				
 				listener.apply(this, args);
 			}
 		 }
@@ -70,15 +74,12 @@
 	*@returns {void}
 	*/
 	this.removeListener = function( eventName , callbacks ){
-		ppIs.isArray(events[eventName],( ) => {			
-			const idx = events[eventName].indexOf(callbacks);
-			if( idx > -1 ){
-				events[eventName].splice(idx,1);
-			}
-		});
+		if( isA(this.events[eventName]) ){			
+			const idx = this.events[eventName].indexOf(callbacks);
+			if( idx > -1 ){ this.events[eventName].splice(idx,1) }
+		}				
 	}
 
   }
-  
-  return ppEvents;
+
 });

@@ -17,9 +17,41 @@ npm i pp-events --save
 
 ## Initialize
 
+### Nodejs
+
 ```javascript
-// Declare event manager here
-var Event = new events()
+
+var ppEvents = require("pp-events")
+
+var Event = ppEvents() // Or new ppEvents()
+
+```
+
+### RequireJS
+
+```javascript
+// in data-main script file
+requirejs.config({    
+    baseUrl:"node_modules/",
+    paths: {
+        "pp-is": "pp-is/pp-is.min",
+        "pp-events":"pp-events/pp-events"
+    }
+});
+// in your main js file
+require(["config"],function(){
+	require(["pp-events"],function(ppEvents){
+		const Event = ppEvents(); // or new events();
+	});
+})
+
+```
+
+### Browser Javascript
+
+```javascript
+
+var Event = ppEvents() // Or new ppEvents()
 
 //say hello function for execute
 var sayHello = function( msg ){

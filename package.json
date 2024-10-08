@@ -1,10 +1,13 @@
 {
   "name": "pp-events",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Simple manager of events from javascript",
-  "main": "pp-events.js",
+  "main": "dist/pp-events.js",
   "scripts": {
-    "compile": "terser --output pp-events.min.js --compress --mangle --comments false -- pp-events.js"
+    "serve-webpack": "webpack --config ./test/config/webpack.config.js && php -S localhost:8090 -t ./test",
+    "compile": "terser --output ./dist/pp-events.min.js --compress --mangle --comments false -- ./dist/pp-events.js",
+    "test-node": "webpack --config ./test/config/webpack.config.js && node ./test/dist/bundle.js",
+    "test-bun": "webpack --config ./test/config/webpack.config.js && bun ./test/dist/bundle.js"
   },
   "repository": {
     "type": "git",

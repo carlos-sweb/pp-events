@@ -1,5 +1,3 @@
-import ppEvents from './../../dist/pp-events.js';
-
 const Event = ppEvents()
 const Event2 = ppEvents()
 //------------------------------------------------------------------------------------

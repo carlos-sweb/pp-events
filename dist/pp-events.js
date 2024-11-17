@@ -1,18 +1,15 @@
 /*!!
  * Power Panel Events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.2.6 (2024/10/07 22:07 PM)
+ * @version 1.3.0 (2024/11/17 01:44 AM)
  * Released under the MIT License
  */
 ;(function(){
 "use strict";
-const events = ( is ) => {
-
-  const isF = is.isFunction, isS = is.isString, isU = is.isUndefined, isA = is.isArray;
-  
-  function instanceEvents(){
+const ppEvents = function( is ){  
 		var self = this;
-		if(!(self instanceof instanceEvents)){ return new instanceEvents(is) }
+		if(!(self instanceof ppEvents)){ return new ppEvents(is) }					
+		const isF = is.isFunction, isS = is.isString, isU = is.isUndefined, isA = is.isArray;
 		self.events = {}
 		/**
 		*on
@@ -60,9 +57,7 @@ const events = ( is ) => {
 				const idx = self.events[eventName].indexOf(callbacks);
 				if( idx > -1 ){ self.events[eventName].splice(idx,1) }
 			}				
-		}		
-  } 
-  return instanceEvents
+		}		  
 }
 
 /** Detect free variable `global` from Node.js. */
@@ -81,11 +76,12 @@ const events = ( is ) => {
 	var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
 
 	if (typeof define == 'function' && typeof define.amd == 'object' && define.amd){
-		define(['pp-is'],(is)=>events(is))
-	}else if( freeModule ){
-		freeModule.exports = events( require('pp-is') )
-	}else{
-		root.ppEvents = events(root.ppIs)
+		define(['pp-is'],(is)=>{			
+			return ppEvents.bind(null,is)
+		})
+	}else if( freeModule ){		
+		freeModule.exports = ppEvents.bind(null,require('pp-is')) 
+	}else{		
+		root.ppEvents = ppEvents.bind(null,ppIs)
 	}
-
 }.call(this))

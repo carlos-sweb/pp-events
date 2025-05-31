@@ -1,7 +1,7 @@
 /*!!
  * Power Panel pp-events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.3.1 (2025/05/30 20:33 PM)
+ * @version 1.3.2 (2025/05/30 20:45 PM)
  * Released under the MIT License
  */ 
 import { isUndefined , isString , isArray , isFunction } from "pp-is"
@@ -15,7 +15,7 @@ function ppEvents (){
 	*@returns {boolean}
 	*@description -> check if events var have callbacks assign
 	*/
-	self.checkOn = (eventName) => is.isString(eventName,(n)=>Object.hasOwnProperty.call( self.events , n ))
+	self.checkOn = (eventName) => isString(eventName,(n)=>Object.hasOwnProperty.call( self.events , n ))
 	/**
 	*on
 	*@param {string} eventName - name event

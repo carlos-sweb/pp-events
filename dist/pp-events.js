@@ -1,5 +1,10 @@
+/*!!
+ * Power Panel pp-events <https://github.com/carlos-sweb/pp-events>
+ * @author Carlos Illesca
+ * @version 1.3.1 (2025/05/30 20:33 PM)
+ * Released under the MIT License
+ */ 
 import { isUndefined , isString , isArray , isFunction } from "pp-is"
-
 function ppEvents (){
 	var self = this;
 	if(!(self instanceof ppEvents)){ return new ppEvents() }

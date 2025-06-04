@@ -68,6 +68,28 @@ Event.removeListener("sayHello",sayHello);
 
 ```
 
+### QuickJs Engine
+
+```javascript
+// nd = No dependencies, pp-events only uses some functions from pp-is that are already included.
+import "./dist/pp-events.nd.min.js"
+
+var Event = ppEvents() // Or new ppEvents()
+
+//say hello function for execute
+var sayHello = function( msg ){
+	console.log(msg)
+}
+
+Event.on("sayHello",sayHello)
+
+Event.emit("sayHello","Hi everyone !!!!!")
+
+// remove Events if will be necesary
+
+Event.removeListener("sayHello",sayHello);
+```
+
 ## Methods
 
 ### `on`

@@ -4,7 +4,20 @@
  * @version 1.3.3 (2025/06/03 20:52 PM)
  * Released under the MIT License
  */ 
-import { isUndefined , isString , isArray , isFunction } from "pp-is"
+
+//import { isUndefined , isString , isArray , isFunction } from "pp-is"
+
+import isStringRaw from "./../node_modules/pp-is/dist/main/isString.js"
+import isUndefinedRaw from "./../node_modules/pp-is/dist/main/isUndefined.js"
+import isArrayRaw from "./../node_modules/pp-is/dist/main/isArray.js"
+import isFunctionRaw from "./../node_modules/pp-is/dist/main/isFunction.js"
+import base from "./../node_modules/pp-is/dist/helper/base.js"
+
+const isString = base(isStringRaw) , 
+isUndefined = base(isUndefinedRaw),
+isArray = base(isArrayRaw),
+isFunction = base(isFunctionRaw)
+
 function ppEvents (){
 	var self = this;
 	if(!(self instanceof ppEvents)){ return new ppEvents() }

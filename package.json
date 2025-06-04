@@ -1,10 +1,10 @@
 {
   "name": "pp-events",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Simple manager of events from javascript",
   "main": "dist/pp-events.js",
   "scripts": {
-    "build":"rollup -c && terser --output ./dist/pp-events.min.js --compress --mangle --comments false -- ./dist/pp-events.rollup.js && rm -rf ./dist/pp-events.rollup.js",
+    "build":"rollup -c && terser -o ./dist/pp-events.min.js --compress --mangle --comments false -- ./dist/pp-events.rollup.js && rm -rf ./dist/pp-events.rollup.js && terser -o ./dist/pp-events.nd.min.js --compress --mangle --comments false -- ./dist/pp-events.nd.rollup.js && rm -rf ./dist/pp-events.nd.rollup.js",
     "serve-webpack": "webpack --config ./test/config/webpack.config.js && php -S localhost:8090 -t ./test",
     "compile": "terser --output ./dist/pp-events.min.js --compress --mangle --comments false -- ./dist/pp-events.js",
     "test-node": "webpack --config ./test/config/webpack.config.js && node ./test/dist/bundle.js",

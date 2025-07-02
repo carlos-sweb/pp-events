@@ -1,7 +1,7 @@
 /*!!
  * Power Panel pp-events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.3.3 (2025/06/03 20:52 PM)
+ * @version 1.3.4 (2025/07/01 22:16 PM)
  * Released under the MIT License
  */ 
 
@@ -11,16 +11,18 @@ import isStringRaw from "./../node_modules/pp-is/dist/main/isString.js"
 import isUndefinedRaw from "./../node_modules/pp-is/dist/main/isUndefined.js"
 import isArrayRaw from "./../node_modules/pp-is/dist/main/isArray.js"
 import isFunctionRaw from "./../node_modules/pp-is/dist/main/isFunction.js"
+import isObjectRaw from "./../node_modules/pp-is/dist/main/isObject.js"
 import base from "./../node_modules/pp-is/dist/helper/base.js"
 
 const isString = base(isStringRaw) , 
 isUndefined = base(isUndefinedRaw),
 isArray = base(isArrayRaw),
-isFunction = base(isFunctionRaw)
+isFunction = base(isFunctionRaw),
+isObject = base(isObjectRaw)
 
-function ppEvents (){
+function ppEvents (events){
 	var self = this;
-	if(!(self instanceof ppEvents)){ return new ppEvents() }
+	if(!(self instanceof ppEvents)){ return new ppEvents(events) }
 	self.events = {}
 	/**
 	*on
@@ -51,7 +53,7 @@ function ppEvents (){
 	self.emit = ( eventName , ...args) => {
 	 isString(eventName,(n)=>{ 
 	 	isArray(self.events[n],(arr)=>{	 	
-		 	for( const listener of arr.slice() ){	 		
+		 	for( const listener of arr.slice() ){
 		 		listener.apply(self,args)
 			}
 	 	})
@@ -72,6 +74,12 @@ function ppEvents (){
 		 });
 		});				
 	}
+	// We initialize the events loaded in the constructor.
+	isObject(events,()=>{		
+		for(const name in events){
+			self.on(name,events[name])
+		}
+	})
 }
 
 export { ppEvents as default }

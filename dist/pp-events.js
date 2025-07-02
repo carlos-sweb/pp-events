@@ -1,13 +1,13 @@
 /*!!
  * Power Panel pp-events <https://github.com/carlos-sweb/pp-events>
  * @author Carlos Illesca
- * @version 1.3.3 (2025/06/03 20:52 PM)
+ * @version 1.3.4 (2025/07/01 22:16 PM)
  * Released under the MIT License
  */ 
-import { isUndefined , isString , isArray , isFunction } from "pp-is"
-function ppEvents (){
+import { isUndefined , isString , isArray , isFunction , isObject } from "pp-is"
+function ppEvents (events){
 	var self = this;
-	if(!(self instanceof ppEvents)){ return new ppEvents() }
+	if(!(self instanceof ppEvents)){ return new ppEvents(events) }
 	self.events = {}
 	/**
 	*on
@@ -38,7 +38,7 @@ function ppEvents (){
 	self.emit = ( eventName , ...args) => {
 	 isString(eventName,(n)=>{ 
 	 	isArray(self.events[n],(arr)=>{	 	
-		 	for( const listener of arr.slice() ){	 		
+		 	for( const listener of arr.slice() ){
 		 		listener.apply(self,args)
 			}
 	 	})
@@ -59,6 +59,12 @@ function ppEvents (){
 		 });
 		});				
 	}
+	// We initialize the events loaded in the constructor.
+	isObject(events,()=>{		
+		for(const name in events){
+			self.on(name,events[name])
+		}
+	})
 }
 
 export { ppEvents as default }

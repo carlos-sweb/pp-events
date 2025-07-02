@@ -3,8 +3,13 @@
 In the web project include pp-events.js with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/pp-is@latest/pp-is.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/pp-events@latest/pp-events.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-is/dist/pp-is.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-events/dist/pp-events.min.js" ></script>
+```
+without dependencies
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/pp-events/dist/pp-events.nd.min.js" ></script>
 ```
 
 Or
